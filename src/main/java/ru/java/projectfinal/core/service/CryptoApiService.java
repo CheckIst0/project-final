@@ -75,20 +75,6 @@ public class CryptoApiService {
         return result;
     }
 
-    public CryptoApiDto putData(Long id){
-        CryptoApiDto result = mapper.map(repository.getById(id), CryptoApiDto.class);
-        CryptoApiDto inter = client.getFullData(result.getName());
-        result.setName(inter.getName());
-        result.setPrice(inter.getPrice());
-        result.setHigh(inter.getHigh());
-        result.setLow(inter.getLow());
-        result.setOpen(inter.getOpen());
-        result.setClose(inter.getClose());
-        result.setTime(inter.getTime());
-        repository.save(mapper.map(result, Crypto.class));
-        return result;
-    }
-
     public void deleteCrypto(Long id){
         repository.deleteById(id);
     }
